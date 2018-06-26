@@ -1,0 +1,8 @@
+/var/log/auto-flowspec/exabgp.log
+{
+  rotate 6
+  monthly
+  compress
+  missingok
+  notifempty
+}

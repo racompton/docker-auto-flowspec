@@ -1,0 +1,8 @@
+/var/log/auto-flowspec/auto-flowspec.log
+{
+  rotate 6
+  monthly
+  compress
+  missingok
+  notifempty
+}
