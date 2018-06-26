@@ -1,7 +1,5 @@
 # Auto-Flowspec Docker Container
 
-> https://chalk.charter.com/x/GIhlDQ 
-
 ## Description
 This is a self-contained flowspec controller in a container.  The auto-flowspec.py script will listen for syslog messages from an Arbor SP PI device.  If the syslog message contains "Residential" and "importance 2" (high level alert) and doesn't contain "is now done" (attack is over) then a API call will be made with Flowspec rules to a flask server which controls ExaBGP.  ExaBGP will then send the rules to one or two route reflectors.  The alert details are also written to a MySQL database.
 Once a syslog message saying that the attack "is now done", another API call is made to ExaBGP to remove the rules.  There is also a clean-up script that will remove any rules that have not been withdrawn after a specified amount of time.
@@ -36,8 +34,8 @@ The log rotate config files need to be copied over to  /etc/logrotate.d/exabgp-l
 
 ## Meta
 
-Pratik Lotia - plotia@charter.com,
-Rich Compton - rcompton@charter.com,
+Pratik Lotia - pratik.lotia@charter.com,
+Rich Compton - rich.compton@charter.com,
 Thomas Bowlby - thomas.bowlby@charter.com
 
 Charter Communications
