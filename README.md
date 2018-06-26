@@ -23,7 +23,7 @@ The log rotate config files need to be copied over to  /etc/logrotate.d/exabgp-l
 1.  set IFS env. variable
   `IFS=$'\n'`
 2.  create file with syslog messages that include (start, residential), iterate over and inject into buffer via netcat
-  `for i in ``cat syslog_test.txt``; do sleep 0.01; echo $i | nc -u -q1 172.18.11.211 514 ; done`
+  `for i in ``cat syslog_test.txt``; do sleep 0.01; echo $i | nc -u -q1 <IP of host> 514 ; done`
 
 ## Release History
 
