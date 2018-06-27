@@ -6,15 +6,19 @@
 # To make the docker daemon start at boot:
 # sudo systemctl enable docker
 #
+# Edit the Dockerfile environment variables below
+# vi Dockerfile
+#
 # To build the container run: 
 # sudo docker build -t auto-flowspec .
 #
-# Create a shared directory called /var/log/auto-flowspec with the command:
+# Create a shared directory for log files from the container called /var/log/auto-flowspec with the command:
 # sudo mkdir /var/log/auto-flowspec
 #
 # To start the container run:
 # sudo docker run --name auto-flowspec -v /var/log/auto-flowspec:/var/log/auto-flowspec -d --restart unless-stopped -p 179:179 -p 514:514/udp -p 9001:9001  --network host auto-flowspec
-
+#
+# Log in to the Supervisor http server with the username of admin and specified password to view the status and STDOUT of the relevant processes at http://<Host IP>:9001
 
 FROM ubuntu:16.04
 
@@ -29,6 +33,8 @@ FROM ubuntu:16.04
 # Upgrade the OS
 RUN apt-get update && apt-get upgrade -y
 
+### Configure all the ENVironment variables below before building the container:
+
 # Define mysql root 
 ENV MYSQL_ROOT_PASS=mysqlrootpassword
 
@@ -39,8 +45,6 @@ RUN echo "mysql-server mysql-server/root_password_again password $MYSQL_ROOT_PAS
 
 # Install necessary packages
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y python-setuptools python-flask curl wget python-requests git supervisor mysql-server python-minimal python-mysql.connector vim lsof unzip
-
-# Configure all the environment variables below before building the container:
 
 # Define the user for the Supervisor web interface
 ENV SUPERVISOR_USER=admin
