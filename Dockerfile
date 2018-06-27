@@ -111,7 +111,7 @@ ENV DDOS_CUTSOMER_MATCH="Residential"
 # Define the syslog string to look for to identify a DDoS stop message 
 ENV DDOS_STOP_MESSAGE=" is now done,"
 
-# Define the syslog string to look for to identify a high level alert.  "importance 2" is a High level 
+# Define the syslog string to look for to identify a high level alert.  "importance 2" is a high level alert in Arbor SP.
 ENV DDOS_HIGH_IMPORTANCE="importance 2"
 
 # That's it.  No more changes are necessary after this point.
