@@ -18,7 +18,7 @@
 
 FROM ubuntu:16.04
 
-#Created by Rich Compton rich.compton@charter.com 1-24-18
+# Dockerfile created by Rich Compton rich.compton@charter.com 1-24-18
 
 #Set this if the Docker container is behind a proxy:
 #ENV http_proxy http://<PROXY IP>:80
@@ -29,7 +29,7 @@ FROM ubuntu:16.04
 # Upgrade the OS
 RUN apt-get update && apt-get upgrade -y
 
-# Define mysql root password
+# Define mysql root 
 ENV MYSQL_ROOT_PASS=mysqlrootpassword
 
 # Set the mysql root password
@@ -52,13 +52,13 @@ ENV SUPERVISOR_PASS=supervisorpassword
 ENV FLOWSPEC_USER_PASS=flowspecpassword
 
 # Define the Exabgp Neighbor #1 IP
-ENV NEIGHBOR1_IP=96.34.194.100
+ENV NEIGHBOR1_IP=192.0.2.1
 
 # Define the Exabgp Neighbor #1 description (no spaces)
 ENV NEIGHBOR1_DESC=flowspec-rtr01
 
 # Define the MD5 password for Neighbor 1
-ENV NEIGHBOR1_MD5=md5password
+ENV NEIGHBOR1_MD5=md5password1
 
 # Define the Exabgp Neighbor 1 Peer ASN
 ENV PEER1_AS=65206
@@ -70,16 +70,16 @@ ENV NEIGHBOR2_IP=192.0.2.2
 ENV NEIGHBOR2_DESC=flowspec-rtr02
 
 # Define the MD5 password for Neighbor 2
-ENV NEIGHBOR2_MD5=md5password
+ENV NEIGHBOR2_MD5=md5password2
 
 # Define the Exabgp Neighbor 1 Peer ASN
 ENV PEER2_AS=65000
 
 # Definie the Exabgp Router ID (normally the IPv4 IP of the host OS)
-ENV ROUTER_ID=172.18.11.219
+ENV ROUTER_ID=192.0.2.3
 
 # Define the Exabgp Local Address (Normally the same IP as the ROUTER_ID, the IPv4 IP of the host OS)
-ENV LOCAL_ADDRESS=172.18.11.219
+ENV LOCAL_ADDRESS=192.0.2.3
 
 # Define the Exabgp Local ASN
 ENV LOCAL_AS=65206
@@ -111,7 +111,7 @@ ENV DDOS_CUTSOMER_MATCH="Residential"
 # Define the syslog string to look for to identify a DDoS stop message 
 ENV DDOS_STOP_MESSAGE=" is now done,"
 
-# Define the syslog string to look for to identify a high level alert
+# Define the syslog string to look for to identify a high level alert.  "importance 2" is a High level 
 ENV DDOS_HIGH_IMPORTANCE="importance 2"
 
 # That's it.  No more changes are necessary after this point.
@@ -124,12 +124,6 @@ RUN mkdir /opt/auto-flowspec/
 
 # Copy over the contents of the auto-flowspec directory over
 COPY flowspec/auto-flowspec/* /opt/auto-flowspec/
-
-# Copy the stable version of ExaBGP (3.4) over 
-#COPY 3.4.zip /tmp/
-#WORKDIR /tmp/
-#RUN unzip 3.4.zip
-#RUN mv /tmp/exabgp-3.4/ /opt/exabgp/
 
 # Get ExaBGP 3.4 code from GitHub 
 WORKDIR /tmp/
