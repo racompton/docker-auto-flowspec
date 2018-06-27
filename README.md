@@ -15,6 +15,7 @@ Once a syslog message saying that the attack "is now done", another API call is 
 `sudo docker build sudo docker --no-cache -t auto-flowspec .`
 5. Then run the container with the command: 
 `sudo docker run --name auto-flowspec -v /var/log/auto-flowspec:/var/log/auto-flowspec -d --restart unless-stopped -p 179:179 -p 514:514/udp -p 9001:9001 --net auto-flowspec-net --ip 192.168.0.2 auto-flowspec`
+6. Log in to the Supervisor http server with the username of admin and specified password to view the status and STDOUT of the relevant processes at http://<Host IP>:9001
 
 ##Logroate
 The log rotate config files need to be copied over to  /etc/logrotate.d/exabgp-logrotate and /etc/logrotate.d/auto-flowspec-logrotate
