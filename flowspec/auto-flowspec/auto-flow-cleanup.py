@@ -82,7 +82,7 @@ def withdraw(dest):
         'sleep',
         'withdraw flow route { match { destination %s/32; protocol icmp; } then { rate-limit ICMP_RATE_LIMIT; community [ COMMUNITY ]; } }' % dest,
         'sleep',
-        'withdraw flow route { match { destination %s/32; source-port =17 =19 =69 =111 =137 =138 =161 =162 =389 =520 =1434 =1701 =5353 =11211; protocol udp; } then { discard; community [ COMMUNITY ]; } }' % dest,
+        'withdraw flow route { match { destination %s/32; source-port =17 =19 =69 =111 =137 =138 =161 =162 =389 =520 =1434 =1701 =1900 =5353 =11211; protocol udp; } then { discard; community [ COMMUNITY ]; } }' % dest,
         'sleep',
         'withdraw flow route { match { destination %s/32; source-port =53; destination-port =4444; protocol udp; } then { discard; community [ COMMUNITY ]; } }' % dest,
         'sleep',
