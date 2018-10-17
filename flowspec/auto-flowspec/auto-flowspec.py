@@ -138,7 +138,7 @@ def announce(dest):
 # Rate limit ICMP traffic
         'announce flow route { match { destination %s/32; protocol icmp; } then { rate-limit ICMP_RATE_LIMIT; community [ COMMUNITY ]; } }' % dest,
         'sleep',
-# Block UDP QOTD (17), Chargen (19), TFTP (69), RPC (111), NetBIOS (137/138), SNMP (161/162), LDAP (389), RIP (520), MSSQL (1434), mDNS (5353), and Memecache (11211) amplificaton traffic
+# Block UDP QOTD (17), Chargen (19), TFTP (69), RPC (111), NetBIOS (137/138), SNMP (161/162), LDAP (389), RIP (520), MSSQL (1434), L2TP (1701), SSDP (1900), mDNS (5353), and Memecache (11211) amplificaton traffic
         'announce flow route { match { destination %s/32; source-port =17 =19 =69 =111 =137 =138 =161 =162 =389 =520 =1434 =1701 =5353 =11211; protocol udp; } then { discard; community [ COMMUNITY ]; } }' % dest,
         'sleep',
 # Block all DNS traffic with a destination port of 4444 (commonly used in DNS amplification attacks)
@@ -179,7 +179,7 @@ def withdraw(dest):
         'sleep',
         'withdraw flow route { match { destination %s/32; protocol icmp; } then { rate-limit ICMP_RATE_LIMIT; community [ COMMUNITY ]; } }' % dest,
         'sleep',
-        'withdraw flow route { match { destination %s/32; source-port =17 =19 =69 =111 =137 =138 =161 =162 =389 =520 =1434 =1701 =5353 =11211; protocol udp; } then { discard; community [ COMMUNITY ]; } }' % dest,
+        'withdraw flow route { match { destination %s/32; source-port =17 =19 =69 =111 =137 =138 =161 =162 =389 =520 =1434 =1701 =1900 =5353 =11211; protocol udp; } then { discard; community [ COMMUNITY ]; } }' % dest,
         'sleep',
         'withdraw flow route { match { destination %s/32; source-port =53; destination-port =4444; protocol udp; } then { discard; community [ COMMUNITY ]; } }' % dest,
         'sleep',
