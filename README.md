@@ -18,7 +18,7 @@ Debian/Ubuntu: `sudo apt install -y docker.io` or RedHat/CentOS: `sudo yum insta
 6. Log in to the Supervisor http server with the username of admin and specified password to view the status and STDOUT of the relevant processes at http://<Host IP>:9001
 7. You will probably want to configure iptables to allow inbound traffic from ArborSP on UDP port 514, inbound traffic from your route refelectors on TCP port 179 and inbound management traffic on SSH (TCP 22) and TCP 9001 (supervisord management web UI).
 
-##Logroate
+## Logroate
 The log rotate config files need to be copied over to  /etc/logrotate.d/exabgp-logrotate and /etc/logrotate.d/auto-flowspec-logrotate
 
 
