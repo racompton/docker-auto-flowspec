@@ -12,7 +12,7 @@ Debian/Ubuntu: `sudo apt install -y docker.io` or RedHat/CentOS: `sudo yum insta
 3. Create the docker network with the command:
 ` sudo docker network create --subnet 192.168.0.0/24 auto-flowspec-net`
 4. Edit the Dockerfile to populate the relevant environment variables then build the container with the command: 
-`sudo docker build sudo docker --no-cache -t auto-flowspec .`
+`sudo docker build --no-cache -t auto-flowspec .`
 5. Then run the container with the command: 
 `sudo docker run --name auto-flowspec -v /var/log/auto-flowspec:/var/log/auto-flowspec -d --restart unless-stopped -p 179:179 -p 514:514/udp -p 9001:9001 --net auto-flowspec-net --ip 192.168.0.2 auto-flowspec`
 6. Log in to the Supervisor http server with the username of admin and specified password to view the status and STDOUT of the relevant processes at http://<Host IP>:9001
